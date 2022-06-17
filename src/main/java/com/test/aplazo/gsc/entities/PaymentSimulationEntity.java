@@ -21,6 +21,11 @@ public class PaymentSimulationEntity {
     private String response;
 
     @Column(updatable = false)
-    private LocalDate created = LocalDate.now();
+    private LocalDate created;
+
+    @PrePersist
+    private void prePersist(){
+        this.created = LocalDate.now();
+    }
 
 }
